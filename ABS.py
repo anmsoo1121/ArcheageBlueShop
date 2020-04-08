@@ -7,6 +7,7 @@ import bs4
 from urllib.request import urlopen, Request
 import urllib
 import urllib.request
+import random
 
 
 client = discord.Client()
@@ -32,7 +33,7 @@ async def on_message(message):
 	if message.content.startswith("!강해지는법"):
 		await message.channel.send("<@" + id + "> 돈을쓰세요 :D")		
 	
-	if message.content.startswith("!일안하고 돈벌기"):
+	if message.content.startswith("!일 안하고 돈벌기"):
 		await message.channel.send("<@" + id + "> 수저를 잘 물고 태어나셨어야죠 :D")	
 	
 	if message.content.startswith("!보름돌"):
@@ -43,11 +44,11 @@ async def on_message(message):
 	
 	if message.content.startswith("!도움"):
 		embed = discord.Embed(title="명령어", description="archeage 푸른소금상회 봇 명령어 모음입니다.", color=0x62c1cc)
-		embed.add_field(name="!채권", value="!채권 입력시 현재시간 기준 채권을 가져옵니다.", inline=True)
+		embed.add_field(name="!채권", value="!채권 입력시 현재시간 기준 자원비축재료를 가져옵니다.", inline=True)
 		embed.add_field(name="!수려한", value="수려한 초승돌 제작시 필요개수 표시해줍니다. ex)!수려한 7", inline=True)
 		embed.add_field(name="!보름돌", value="불굴의 초월,사랑,추적,투지 보름돌 제작시 필요개수를 표시해줍니다.", inline=True)
 		embed.add_field(name="!초승돌 강화", value="명점 초승돌 강화시 필요개수를 표시해줍니다.", inline=True)
-		embed.set_footer(text="추후 업데이트 예정입니다.")
+		embed.set_footer(text="경매장 검색은은 추후 업데이트 예정입니다.")
 		
 		print("!help")
 		await message.channel.send("Hs", embed=embed)
@@ -82,7 +83,7 @@ async def on_message(message):
 			colour = discord.Color.red()
 		)
 		
-		embed.set_thumbnail(url="https://i.imgur.com/SD4k1fc.jpg")
+		embed.set_thumbnail(url="https://i.imgur.com/t3pHqis.jpg?1")
 		embed.add_field(name = '수려한 초승돌', value = n, inline=False)
 		embed.add_field(name = '초승돌 결정', value = cc, inline=False)
 		embed.add_field(name = '강도높은주괴', value = StrengthIron * n, inline=False)
@@ -139,6 +140,8 @@ async def on_message(message):
 			description = "",
 			colour = discord.Color.red()
 		)
+		
+		embed.set_thumbnail(url='https://i.imgur.com/M1SGJIu.jpg')
 		embed.add_field(name = '_', value = '_2단계_', inline=False)
 		embed.add_field(name = '| 초승돌 강화석 1단계|', value = CrescentStone2 * n, inline=True)
 		embed.add_field(name = '초승돌 결정', value = CrescenticCrystal2 * n, inline=True)
@@ -213,6 +216,16 @@ async def on_message(message):
 			colour = discord.Color.red()
 		)
 		
+		a  = 'https://i.imgur.com/Wmw8txM.jpg'	   #1_염료 
+		b  = 'https://i.imgur.com/zjUsJCM.jpg'     #1_연마제
+		c  = 'https://i.imgur.com/scFJwIb.jpg'     #1_기름
+	
+		imgur = url1, url2, url3
+		
+		random.choice(imgur)
+		
+		embed.set_thumbnail(url = random.choice(imgur))
+		
 		embed.add_field(name = "1단계 염료", value = "잔뿌리 염료", inline=True)
 		embed.add_field(name = "1단계 연마제", value = "불투명한 연마제", inline=True)
 		embed.add_field(name = "1단계 기름", value = "조그만 씨눈 기름", inline=True)
@@ -225,10 +238,12 @@ async def on_message(message):
 		embed.add_field(name = "장미", value = rose * n, inline=True)
 		embed.add_field(name = "철쭉", value = rose * n, inline=True)
 		embed.add_field(name = "쌀", value = rose * n, inline=True)
+		embed.set_footer(text = '※이미지는 랜덤입니다.')
 		
 		print("1단계 염료", n , "개")
 		
 		await message.channel.send(client, embed=embed)
+		
 		
 	if message.content.startswith("!2단계 염료"):
 		await message.channel.send("2단게 염료,기름,연마제" + message.content[7:] + "개 만드는 재료")
@@ -249,6 +264,16 @@ async def on_message(message):
 			colour = discord.Color.red()
 		)
 		
+		a = 'https://i.imgur.com/Wys4w0H.jpg' #2_연마제
+		b = 'https://i.imgur.com/6qVN4mD.jpg' #2_염료
+		c = 'https://i.imgur.com/vTjuami.jpg' #2_기름
+		
+		imgur = a, b, c
+		
+		random.choice(imgur)
+	
+		embed.set_thumbnail(url = random.choice(imgur))
+		
 		embed.add_field(name = "2단계 염료", value = "작은 잎사귀 염료", inline=True)
 		embed.add_field(name = "2단계 연마제", value = "거친 입자의 연마제", inline=True)
 		embed.add_field(name = "2단계 기름", value = "윤기 있는 진한 기름", inline=True)
@@ -267,7 +292,7 @@ async def on_message(message):
 		embed.add_field(name = "녹색 산호초", value = RedCoral * n, inline=True)
 		embed.add_field(name = "사슴뿔형 산호초", value = RedCoral * n, inline=True)
 		embed.add_field(name = "붉은색 산호초", value = RedCoral * n, inline=True)
-		
+		embed.set_footer(text = '※이미지는 랜덤입니다.')
 		print("2단계 염료", n , "개")
 		
 		await message.channel.send(client, embed=embed)	
@@ -292,9 +317,20 @@ async def on_message(message):
 			colour = discord.Color.red()
 		)
 		
-		embed.add_field(name = "3단계 염료", value = "잔뿌리 염료", inline=True)
-		embed.add_field(name = "3단계 연마제", value = "불투명한 연마제", inline=True)
-		embed.add_field(name = "3단계 기름", value = "조그만 씨눈 기름", inline=True)
+		a = 'https://i.imgur.com/dVPMHSk.jpg'	#3_기름
+		b = 'https://i.imgur.com/mr1nF8G.jpg'	#3_연마제
+		c = 'https://i.imgur.com/WoS6dPm.jpg'	#3_염료
+		
+		imgur = a, b, c
+		
+		random.choice(imgur)
+		
+		embed.set_thumbnail(url = random.choice(imgur))
+		
+		
+		embed.add_field(name = "3단계 염료", value = "부드러운 줄기 염료", inline=True)
+		embed.add_field(name = "3단계 연마제", value = "끈적임 없는 연마제", inline=True)
+		embed.add_field(name = "3단계 기름", value = "투명한 가루가 섞인 기름", inline=True)
 		
 		embed.add_field(name = "작은 잎사귀 염료", value = second * n, inline=True)
 		embed.add_field(name = "거친 입자의 연마제", value = second * n, inline=True)
@@ -359,4 +395,4 @@ async def on_message(message):
 client.run('token')
 
 
- 
+
