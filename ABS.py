@@ -28,7 +28,7 @@ async def on_message(message):
 	channel = message.channel
 		
 	if message.content.startswith("!만든사람"):
-		await message.channel.send("Hs")
+		await message.channel.send("여울이")
 		
 	if message.content.startswith("!강해지는법"):
 		await message.channel.send("<@" + id + "> 돈을쓰세요 :D")		
@@ -177,7 +177,17 @@ async def on_message(message):
 				colour = discord.Color.purple()
 			)
 			
-			# embed.set_thumbnail
+			a = 'https://i.imgur.com/dAY4n0T.jpg' #투지
+			b = 'https://i.imgur.com/UDQ4Wj6.jpg' #추적
+			c = 'https://i.imgur.com/FknjgYv.jpg' #초월
+			d = 'https://i.imgur.com/4XwQVeb.jpg' #사랑
+
+			imgur = a, b, c, d
+			
+			random.choice(imgur)
+			
+			embed.set_thumbnail(url = random.choice(imgur))
+			
 			embed.add_field(name = '추적,투지 보름돌', value = n, inline=True)
 			embed.add_field(name = '사랑,초월 보름돌', value = n, inline=True)
 			embed.add_field(name = '신비한 달의 정수', value = n * MoonEssence, inline=False)
@@ -190,6 +200,10 @@ async def on_message(message):
 			
 			await message.channel.send(client, embed=embed)
 			
+	
+		# """ 
+		# 1,2,3 단계 염료
+		# """
 	
 	if message.content.startswith("!1단계 염료"):
 		await message.channel.send("1단계 염료,기름,연마제" + message.content[7:] + "개 만드는 재료")
@@ -360,6 +374,10 @@ async def on_message(message):
 		
 		await message.channel.send(client, embed=embed)
 
+		# """ 
+		# 채권 탭
+		# """
+		
 	if message.content.startswith("!채권"):
 		
 		embed = discord.Embed(
@@ -388,8 +406,156 @@ async def on_message(message):
 		# embed.add_field(name='최소수량', value=cornjs6, inline=True) #20개 포인트
 		await message.channel.send(client, embed=embed)		
 			
+		
+		# """ 
+		# 김가네 장점 가져오기
+		# """
+		
+	if message.content.startswith("!김순딩"):
+		
+		embed = discord.Embed(
+            title = "김가네 장점",
+            description = " ",
+            colour= discord.Color.red()
+        )
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		 
+		url = 'https://archeage.xlgames.com/characters/3CD2027B-C03A-4A48-979C-B320AE7C6A56' #김순딩
+		print(url)
+		
+		req = Request(url, headers=hdr)
+		html = urllib.request.urlopen(req)
+		bsObj = bs4.BeautifulSoup(html, "html.parser")
+		
+		a = bsObj.select('.score')
+		
+		for score in a:
+			print('김순딩' + score.text + '점')
+		
+		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.add_field(name = '김순딩', value = score.text + '점', inline = True)
+		
+		
+		await message.channel.send(client, embed=embed)
+		
+		
+	if message.content.startswith("!김짜증"):
 	
-
+		embed = discord.Embed(
+			title = "김가네 장점",
+			description = "",
+			colour = discord.Color.red()
+		)
+		
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		
+		url = 'https://archeage.xlgames.com/characters/F69B27C6-4798-490C-B50A-D4E459CCE8A5' #김짜증
+		
+		print(url)
+		
+		req = Request(url, headers=hdr)
+		html = urllib.request.urlopen(req)
+		bsObj = bs4.BeautifulSoup(html, "html.parser")
+		
+		a = bsObj.select('.score')
+		
+		for score in a:
+			print('김짜증' + score.text + '점')	
+		
+		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.add_field(name = '김짜증', value = score.text + '점', inline = True)
+		
+		
+		await message.channel.send(client, embed=embed)
+		
+	if message.content.startswith("!김버럭"):
+	
+		embed = discord.Embed(
+			title = "김가네 장점",
+			description = "",
+			colour = discord.Color.red()
+		)
+		
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		
+		url = 'https://archeage.xlgames.com/characters/3DDFB1A0-90AF-474F-AE26-D27F799D2679' #김버럭
+		
+		print(url)
+		
+		req = Request(url, headers=hdr)
+		html = urllib.request.urlopen(req)
+		bsObj = bs4.BeautifulSoup(html, "html.parser")
+		
+		a = bsObj.select('.score')
+		
+		for score in a:
+			print('김버럭' + score.text + '점')	
+		
+		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.add_field(name = '김버럭', value = score.text + '점', inline = True)
+		
+		
+		await message.channel.send(client, embed=embed)
+		
+	if message.content.startswith("!김덤덤"):
+	
+		embed = discord.Embed(
+			title = "김가네 장점",
+			description = "",
+			colour = discord.Color.red()
+		)
+		
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		
+		url = 'https://archeage.xlgames.com/characters/8184B531-C3B9-4988-B987-13176949BBD5' #김덤덤
+		
+		print(url)
+		
+		req = Request(url, headers=hdr)
+		html = urllib.request.urlopen(req)
+		bsObj = bs4.BeautifulSoup(html, "html.parser")
+		
+		a = bsObj.select('.score')
+		
+		for score in a:
+			print('김덤덤' + score.text + '점')	
+		
+		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.add_field(name = '김덤덤', value = score.text + '점', inline = True)
+		
+		
+		await message.channel.send(client, embed=embed)
+		
+	if message.content.startswith("!김다정"):
+	
+		embed = discord.Embed(
+			title = "김가네 장점",
+			description = "",
+			colour = discord.Color.red()
+		)
+		
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		
+		url = 'https://archeage.xlgames.com/characters/02EF0662-5086-4910-95F2-E45C2B947778' #김다정
+		
+		print(url)
+		
+		req = Request(url, headers=hdr)
+		html = urllib.request.urlopen(req)
+		bsObj = bs4.BeautifulSoup(html, "html.parser")
+		
+		a = bsObj.select('.score')
+		
+		for score in a:
+			print('김다정' + score.text + '점')	
+		
+		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.add_field(name = '김다정', value = score.text + '점', inline = True)
+		
+		
+		await message.channel.send(client, embed=embed)
+	
+	
 	
 		
 client.run('token')
