@@ -19,6 +19,8 @@ async def on_ready():
 	print(client.user.id)
 	print("@#@#@#@#@#@#@")
 	
+	
+	
 @client.event
 async def on_message(message):
 	if message.author.bot:
@@ -48,6 +50,7 @@ async def on_message(message):
 		embed.add_field(name="!수려한", value="수려한 초승돌 제작시 필요개수 표시해줍니다. ex)!수려한 7", inline=True)
 		embed.add_field(name="!보름돌", value="불굴의 초월,사랑,추적,투지 보름돌 제작시 필요개수를 표시해줍니다.", inline=True)
 		embed.add_field(name="!초승돌 강화", value="명점 초승돌 강화시 필요개수를 표시해줍니다.", inline=True)
+		embed.add_field(name = "!캐리명", value="캐릭터의 장점을 표시합니다.", inline=True)
 		embed.set_footer(text="경매장 검색은은 추후 업데이트 예정입니다.")
 		
 		print("!help")
@@ -462,7 +465,7 @@ async def on_message(message):
 		for score in a:
 			print('김짜증' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/QCn3HT5.png')
 		embed.add_field(name = '김짜증', value = score.text + '점', inline = True)
 		
 		
@@ -491,7 +494,7 @@ async def on_message(message):
 		for score in a:
 			print('김버럭' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/xzokBvM.png')
 		embed.add_field(name = '김버럭', value = score.text + '점', inline = True)
 		
 		
@@ -520,7 +523,7 @@ async def on_message(message):
 		for score in a:
 			print('김덤덤' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/8EfQtjD.jpg')
 		embed.add_field(name = '김덤덤', value = score.text + '점', inline = True)
 		
 		
