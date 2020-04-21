@@ -42,10 +42,32 @@ async def on_message(message):
 		await message.channel.send("<@" + id + "> ex)!불굴의 보름돌 이라고 입력하쇼")
 		
 	if message.content.startswith("!염료"):
-		await message.channel.send("<@" + id + "> ex)!1단계 염료 22 라고 입력하쇼")		
+		await message.channel.send("<@" + id + "> ex)!1단계 염료 22 라고 입력하쇼")
+
+	if message.content.startswith("!계정"):
+		userid = "#"
+		userpw = "#!"
+		
+		embed = discord.Embed(
+			title = '# 계정',
+			description = '',
+			colour = discord.Color.red()
+		)
+		print("id : " + userid + "입니다.")
+		print("pw : " + userpw + "입니다.")
+		
+		embed.add_field(name = 'id', value = userid, inline = True)
+		embed.add_field(name = 'pw', value = userpw, inline = True)
+		
+		await message.channel.send("계정", embed=embed)
 	
 	if message.content.startswith("!도움"):
-		embed = discord.Embed(title="명령어", description="archeage 푸른소금상회 봇 명령어 모음입니다.", color=0x62c1cc)
+	
+		embed = discord.Embed(
+			title="명령어",
+			description="archeage 푸른소금상회 봇 명령어 모음입니다.", 
+			color=0x62c1cc)
+			
 		embed.add_field(name="!채권", value="!채권 입력시 현재시간 기준 자원비축재료를 가져옵니다.", inline=True)
 		embed.add_field(name="!수려한", value="수려한 초승돌 제작시 필요개수 표시해줍니다. ex)!수려한 7", inline=True)
 		embed.add_field(name="!보름돌", value="불굴의 초월,사랑,추적,투지 보름돌 제작시 필요개수를 표시해줍니다.", inline=True)
@@ -104,14 +126,6 @@ async def on_message(message):
 		embed.add_field(name = '은광석', value = SilverOres * i, inline=True)
 		
 		print("수려한", n, "개")
-		# print("초승돌결정",cc,"개")
-		# print("강높주",StrengthIron * n,"개")
-		# print("흑빛",Blacklight * i,"개")
-		# print("철쭉",Royalazalea * i,"개")
-		# print("수선화",Narcissus * i,"개")
-		# print("철주괴",Iron * i,"개")
-		# print("구리",Copper * i,"개")
-		# print("은괴",Silver * i,"개")
 		
 		await message.channel.send(client, embed=embed)
 		
@@ -138,6 +152,9 @@ async def on_message(message):
 		CrescentStone6 = 6			#6단계 강화
 		CrescenticCrystal6 = 20
 		
+		C1 = CrescentStone2 + CrescentStone3 + CrescentStone4 + CrescentStone5 + CrescentStone6 	#초강합
+		C2 = CrescenticCrystal2 + CrescenticCrystal3 + CrescenticCrystal4 + CrescenticCrystal5 + CrescenticCrystal6		#초결 합
+		
 		embed = discord.Embed(
 			title = "초승돌 강화",
 			description = "",
@@ -160,6 +177,10 @@ async def on_message(message):
 		embed.add_field(name = '_', value = '_6단계_', inline=False)
 		embed.add_field(name = '| 초승돌 강화석 1단계|', value = CrescentStone6 * n, inline=True)
 		embed.add_field(name = '초승돌 결정', value = CrescenticCrystal6 * n, inline=True)
+		embed.add_field(name = '_', value = '_총합_', inline=False)
+		embed.add_field(name = '초승돌 강화석 합', value = C1 * n, inline=True)
+		embed.add_field(name = '초승돌 결정 합', value = C2 * n, inline=True)
+		
 		
 		await message.channel.send(client, embed=embed)
 		
@@ -435,7 +456,7 @@ async def on_message(message):
 		for score in a:
 			print('김순딩' + score.text + '점')
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/ky4pgOY.jpg')
 		embed.add_field(name = '김순딩', value = score.text + '점', inline = True)
 		
 		
@@ -552,16 +573,82 @@ async def on_message(message):
 		for score in a:
 			print('김다정' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/rVgdqCI.jpg')
 		embed.add_field(name = '김다정', value = score.text + '점', inline = True)
 		
 		
 		await message.channel.send(client, embed=embed)
-	
-	
-	
 		
-client.run('token')
+	if message.content.startswith("!로또"):
+	await message.channel.send("이시간 행운번호!")
+			Text = ""
+			number = [1, 2, 3, 4, 5, 6, 7]
+			count = 0
+			for i in range(0, 7):
+				num = random.randrange(1, 46)
+				number[i] = num
+				if count >= 1:
+					for i2 in range(0, i):
+						if number[i] == number[i2]:  # 만약 현재랜덤값이 이전숫자들과 값이 같다면
+							numberText = number[i]
+							print("작동 이전값 : " + str(numberText))
+							number[i] = random.randrange(1, 46)
+							numberText = number[i]
+							print("작동 현재값 : " + str(numberText))
+							if number[i] == number[i2]:  # 만약 다시 생성한 랜덤값이 이전숫자들과 또 같다면
+								numberText = number[i]
+								print("작동 이전값 : " + str(numberText))
+								number[i] = random.randrange(1, 46)
+								numberText = number[i]
+								print("작동 현재값 : " + str(numberText))
+								if number[i] == number[i2]:  # 만약 다시 생성한 랜덤값이 이전숫자들과 또 같다면
+									numberText = number[i]
+									print("작동 이전값 : " + str(numberText))
+									number[i] = random.randrange(1, 46)
+									numberText = number[i]
+									print("작동 현재값 : " + str(numberText))
+	
+				count = count + 1
+				Text = Text + "  " + str(number[i])
+	
+			print(Text.strip())
+			embed = discord.Embed(
+				title="복권 숫자!",
+				description=Text.strip(),
+				colour=discord.Color.red()
+			)
+			await message.channel.send(client, embed=embed)
+			
+	if message.content.startswith("!날씨"):
+		
+		embed = discord.Embed(
+            title = "현재 날씨",
+            description = " ",
+            colour= discord.Color.red()
+        )
+		
+		hdr = {'User-Agent': 'Mozilla/5.0'}
+		url = 'https://search.naver.com/search.naver?ie=UTF-8&query=%EB%82%A0%EC%94%A8&sm=chr_hty'
+			
+		print(url)
+		req = Request(url, headers=hdr)
+		html = urllib.request.urlopen(req)
+		bsObj = bs4.BeautifulSoup(html, "html.parser")
+		
+		a = bsObj.select('.todaytemp')
+		
+		for todaytemp in a:
+			print('현재는' + todaytemp.text + '도 입니다.')
+							
+		
+		# embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
+		embed.add_field(name = '현재는', value = todaytemp.text + '도 입니다.', inline = True)
+		
+		
+		await message.channel.send(client, embed=embed)		
+
+
+client.run('NjkwMDk0MDkxMTAyNTg0ODMy.Xn1YSw.fcTYsou9NKve0W0-l7XbSoiRHWI')
 
 
 
