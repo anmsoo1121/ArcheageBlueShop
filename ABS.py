@@ -618,35 +618,7 @@ async def on_message(message):
 				colour=discord.Color.red()
 			)
 			await message.channel.send(client, embed=embed)
-			
-	if message.content.startswith("!날씨"):
-		
-		embed = discord.Embed(
-            title = "현재 날씨",
-            description = " ",
-            colour= discord.Color.red()
-        )
-		
-		hdr = {'User-Agent': 'Mozilla/5.0'}
-		url = 'https://search.naver.com/search.naver?ie=UTF-8&query=%EB%82%A0%EC%94%A8&sm=chr_hty'
-			
-		print(url)
-		req = Request(url, headers=hdr)
-		html = urllib.request.urlopen(req)
-		bsObj = bs4.BeautifulSoup(html, "html.parser")
-		
-		a = bsObj.select('.todaytemp')
-		
-		for todaytemp in a:
-			print('현재는' + todaytemp.text + '도 입니다.')
-							
-		
-		# embed.set_thumbnail(url = 'https://i.imgur.com/PrUI5TT.jpg')
-		embed.add_field(name = '현재는', value = todaytemp.text + '도 입니다.', inline = True)
-		
-		
-		await message.channel.send(client, embed=embed)		
-
+				
 
 client.run('')
 
