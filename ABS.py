@@ -1,13 +1,13 @@
 import discord
-import asyncio
-# import requests
-# from bs4 import BeautifulSoup
+from discord.ext.commands import Bot
 from discord.ext import commands
+import asyncio
 import bs4
 from urllib.request import urlopen, Request
 import urllib
 import urllib.request
 import random
+
 
 
 client = discord.Client()
@@ -18,8 +18,7 @@ async def on_ready():
 	print(client.user.name)
 	print(client.user.id)
 	print("@#@#@#@#@#@#@")
-	
-	
+
 	
 @client.event
 async def on_message(message):
@@ -43,13 +42,16 @@ async def on_message(message):
 		
 	if message.content.startswith("!염료"):
 		await message.channel.send("<@" + id + "> ex)!1단계 염료 22 라고 입력하쇼")
+	
+	if message.content.startswith("!수려한"):
+		await message.channel.send("<@" + id + "> ex)갯수 입력 부탁드립니다. :D")
 
 	if message.content.startswith("!계정"):
-		userid = "#"
-		userpw = "#!"
+		userid = ""
+		userpw = ""
 		
 		embed = discord.Embed(
-			title = '# 계정',
+			title = '',
 			description = '',
 			colour = discord.Color.red()
 		)
@@ -258,7 +260,7 @@ async def on_message(message):
 		b  = 'https://i.imgur.com/zjUsJCM.jpg'     #1_연마제
 		c  = 'https://i.imgur.com/scFJwIb.jpg'     #1_기름
 	
-		imgur = url1, url2, url3
+		imgur = a, b, c
 		
 		random.choice(imgur)
 		
@@ -580,7 +582,7 @@ async def on_message(message):
 		await message.channel.send(client, embed=embed)
 		
 	if message.content.startswith("!로또"):
-	await message.channel.send("이시간 행운번호!")
+		# await message.channel.send("이시간 행운번호!")
 			Text = ""
 			number = [1, 2, 3, 4, 5, 6, 7]
 			count = 0
@@ -613,12 +615,14 @@ async def on_message(message):
 	
 			print(Text.strip())
 			embed = discord.Embed(
-				title="복권 숫자!",
+				title="오늘의 행운번호!",
 				description=Text.strip(),
 				colour=discord.Color.red()
 			)
 			await message.channel.send(client, embed=embed)
-				
+			
+	
+
 
 client.run('')
 
