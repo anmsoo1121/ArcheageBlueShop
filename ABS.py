@@ -2,12 +2,14 @@ import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
+import requests
+from bs4 import BeautifulSoup
 import bs4
 from urllib.request import urlopen, Request
 import urllib
 import urllib.request
 import random
-
+# import command.py
 
 
 client = discord.Client()
@@ -17,8 +19,9 @@ async def on_ready():
 	print("login")
 	print(client.user.name)
 	print(client.user.id)
-	print("@#@#@#@#@#@#@")
-
+	print("==================")
+	await client.change_presence(status=discord.Status.online, activity=discord.Game("뭐가 뭔지모를땐 !도움 입력하세요."))
+	
 	
 @client.event
 async def on_message(message):
@@ -47,11 +50,11 @@ async def on_message(message):
 		await message.channel.send("<@" + id + "> ex)갯수 입력 부탁드립니다. :D")
 
 	if message.content.startswith("!계정"):
-		userid = ""
-		userpw = ""
+		userid = "#"
+		userpw = "#"
 		
 		embed = discord.Embed(
-			title = '',
+			title = '김짜증 계정',
 			description = '',
 			colour = discord.Color.red()
 		)
@@ -154,6 +157,8 @@ async def on_message(message):
 		CrescentStone6 = 6			#6단계 강화
 		CrescenticCrystal6 = 20
 		
+		
+		#초승돌 합 구하기
 		C1 = CrescentStone2 + CrescentStone3 + CrescentStone4 + CrescentStone5 + CrescentStone6 	#초강합
 		C2 = CrescenticCrystal2 + CrescenticCrystal3 + CrescenticCrystal4 + CrescenticCrystal5 + CrescenticCrystal6		#초결 합
 		
@@ -517,7 +522,7 @@ async def on_message(message):
 		for score in a:
 			print('김버럭' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/xzokBvM.png')
+		embed.set_thumbnail(url = 'https://i.imgur.com/5Licrh3.png')
 		embed.add_field(name = '김버럭', value = score.text + '점', inline = True)
 		
 		
@@ -621,10 +626,37 @@ async def on_message(message):
 			)
 			await message.channel.send(client, embed=embed)
 			
+	if	message.content.startswith("!다나와"):
 	
+		Name = message.content[5:len(message.content)]
+		# n = str(Name)
+		
+		# url = ("http://search.danawa.com/dsearch.php?query="+n)
+		# print(url)
+		
+		req = requests.get("http://search.danawa.com/dsearch.php?query="+Name)
+		print(req)
+		html = req.text
+		soup = BeautifulSoup(html, "html.parser")
+
+		ram = soup.find('ul',{'class': 'product_list'})
+		print(ram)
+		# b = bsObj.find('a',{'class': 'click_log_product_standard_price_'})
+		
+		# c = a.text
+		# d = b.text
+		
+		embed = discord.Embed(
+			title = "다나와 검색",
+			description = "",
+			colour = discord.Color.red()
+		)
+		
+		embed.add_field(name = "이름", value=ram, inline=True)
+		# embed.add_field(name = "금액", value=b, inline=True)
+		await message.channel.send(client, embed=embed)
+		
+		
 
 
-client.run('')
-
-
-
+client.run('#')
