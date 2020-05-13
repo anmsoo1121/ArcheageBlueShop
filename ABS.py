@@ -1,6 +1,6 @@
 import discord
-from discord.ext.commands import Bot
-from discord.ext import commands
+# from discord.ext.commands import Bot
+# from discord.ext import commands
 import asyncio
 import requests
 from bs4 import BeautifulSoup
@@ -9,7 +9,7 @@ from urllib.request import urlopen, Request
 import urllib
 import urllib.request
 import random
-# import command.py
+
 
 
 client = discord.Client()
@@ -21,7 +21,9 @@ async def on_ready():
 	print(client.user.id)
 	print("==================")
 	await client.change_presence(status=discord.Status.online, activity=discord.Game("뭐가 뭔지모를땐 !도움 입력하세요."))
+	# await client.change_resence(game=discord.Game(name="!도움"))
 	
+
 	
 @client.event
 async def on_message(message):
@@ -33,12 +35,9 @@ async def on_message(message):
 		
 	if message.content.startswith("!만든사람"):
 		await message.channel.send("여울이")
-		
-	if message.content.startswith("!강해지는법"):
-		await message.channel.send("<@" + id + "> 돈을쓰세요 :D")		
 	
-	if message.content.startswith("!일 안하고 돈벌기"):
-		await message.channel.send("<@" + id + "> 수저를 잘 물고 태어나셨어야죠 :D")	
+	if message.content.startswith("!업데이트"):
+		await message.channel.send("20.05.12 열쇠제작법 추가")
 	
 	if message.content.startswith("!보름돌"):
 		await message.channel.send("<@" + id + "> ex)!불굴의 보름돌 이라고 입력하쇼")
@@ -73,11 +72,11 @@ async def on_message(message):
 			description="archeage 푸른소금상회 봇 명령어 모음입니다.", 
 			color=0x62c1cc)
 			
-		embed.add_field(name="!채권", value="!채권 입력시 현재시간 기준 자원비축재료를 가져옵니다.", inline=True)
-		embed.add_field(name="!수려한", value="수려한 초승돌 제작시 필요개수 표시해줍니다. ex)!수려한 7", inline=True)
-		embed.add_field(name="!보름돌", value="불굴의 초월,사랑,추적,투지 보름돌 제작시 필요개수를 표시해줍니다.", inline=True)
-		embed.add_field(name="!초승돌 강화", value="명점 초승돌 강화시 필요개수를 표시해줍니다.", inline=True)
-		embed.add_field(name = "!캐리명", value="캐릭터의 장점을 표시합니다.", inline=True)
+		embed.add_field(name="!채권", value="!채권 입력시 현재시간 기준 자원비축재료를 가져옵니다.", inline=False)
+		embed.add_field(name="!수려한", value="수려한 초승돌 제작시 필요개수 표시해줍니다. ex)!수려한 7", inline=False)
+		embed.add_field(name="!보름돌", value="불굴의 초월,사랑,추적,투지 보름돌 제작시 필요개수를 표시해줍니다.", inline=False)
+		embed.add_field(name="!초승돌 강화", value="명점 초승돌 강화시 필요개수를 표시해줍니다.", inline=False)
+		embed.add_field(name = "!캐리명", value="캐릭터의 장점을 표시합니다.", inline=False)
 		embed.set_footer(text="경매장 검색은은 추후 업데이트 예정입니다.")
 		
 		print("!help")
@@ -404,7 +403,54 @@ async def on_message(message):
 		print("3단계 염료", n , "개")
 		
 		await message.channel.send(client, embed=embed)
+		
+	if message.content.startswith("!열쇠"):
+			#열쇠는 5개 씩
+		userInput = message.content[4:]
+		n = int(userInput)
+		a = n * 5
+		
+		Copper = 1				#구리 주괴 = 1
+		CopperOres = 5			#구리 광석 = 5
+		Silver = 1				#은괴 = 1
+		SilverOres = 5			#은광석 = 5
+		Gold = 1				#금괴 = 1
+		GoldOres = 5			#금광석 = 5
+		
 
+		CopperKey = Copper * 2
+		CopperA = Copper * 0.6
+		SilverA = Silver * 0.6
+		GoldA = Gold * 3
+		SilverKey = Silver * 2
+		
+		# SilverKey = CopperKey * (Copper * 0.6) * Silver
+		# GoldKey =  SilverKey * Copper * (Silver * 0.6) * Gold * 3
+		#2, 0.6, 1
+		
+		embed = discord.Embed(
+			title = "열쇠",
+			description = " ",
+			colour = discord.Color.green()
+		)
+		
+		embed.add_field(name = "구리열쇠", value = "아래 재료" , inline=False)
+		embed.add_field(name = "구리주괴", value = CopperKey * a , inline=True)
+		embed.add_field(name = "은열쇠" , value = "아래 재료" , inline=False)
+		embed.add_field(name = "구리열쇠" , value = CopperKey * a , inline=True)
+		embed.add_field(name = "구리주괴" , value = CopperA * a , inline=True)
+		embed.add_field(name = "은괴" , value = Silver , inline=True)
+		embed.add_field(name = "금열쇠" , value = "아래 재료" , inline=False)
+		embed.add_field(name = "은열쇠" , value = SilverKey * a , inline=True)
+		embed.add_field(name = "구리주괴" , value = Copper * a , inline=True)
+		embed.add_field(name = "은괴" , value = SilverA * a , inline=True)
+		embed.add_field(name = "금괴" , value = GoldA * a , inline=True)
+		embed.set_footer(text="열쇠는 1 = 5 개입니다.")
+		
+		print("열쇠", a , "개")
+		
+		await message.channel.send(client, embed=embed)
+		
 		# """ 
 		# 채권 탭
 		# """
