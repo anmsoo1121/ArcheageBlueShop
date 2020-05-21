@@ -19,3 +19,10 @@ Python archeage blueShop
 20.06 추가 예정<br>
  - 채권 이미지 저장 후 불러오기 식으로 변경
 
+import pyautogui
+
+screenWidth, screenHeigt = pyautogui.size()
+print('{0},{1}'.format(screenWidth, screenHeigt))
+
+currentMouseX, currentMouseY = pyautogui.position()
+print('{0},{1}'.format(currentMouseX, currentMouseY))
