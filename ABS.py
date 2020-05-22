@@ -1,15 +1,22 @@
 import discord
-# from discord.ext.commands import Bot
-# from discord.ext import commands
+from discord.ext.commands import Bot
+from discord.ext import commands
+import os
 import asyncio
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 import bs4
 from urllib.request import urlopen, Request
 import urllib
 import urllib.request
 import random
-
+from selenium import webdriver
+from PIL import Image
+from io import BytesIO
+from selenium.webdriver.chrome.options import Options
+import time
+import requests
+import pyautogui
 
 
 client = discord.Client()
@@ -49,8 +56,8 @@ async def on_message(message):
 		await message.channel.send("<@" + id + "> ex)갯수 입력 부탁드립니다. :D")
 
 	if message.content.startswith("!계정"):
-		userid = "#"
-		userpw = "#"
+		userid = "ggomahot"
+		userpw = "배아파헌쑤야1!"
 		
 		embed = discord.Embed(
 			title = '김짜증 계정',
@@ -405,6 +412,7 @@ async def on_message(message):
 		await message.channel.send(client, embed=embed)
 		
 	if message.content.startswith("!열쇠"):
+		await message.channel.send("열쇠는 5개씩입니다.")
 			#열쇠는 5개 씩
 		userInput = message.content[4:]
 		n = int(userInput)
@@ -462,26 +470,22 @@ async def on_message(message):
             description = " ",
             colour= discord.Color.red()
         )
-		hdr = {'User-Agent': 'Mozilla/5.0'}
-		url = 'https://archeage.xlgames.com/play/worldinfo/GARDEN'
-		print(url)
-		req = Request(url, headers=hdr)
-		html = urllib.request.urlopen(req)
-		bsObj = bs4.BeautifulSoup(html, "html.parser")
+
+		driver = webdriver.Chrome('C:/Users/descenteuser/AppData/Local/Programs/Python/chromedriver.exe')
 		
-		cornjs = bsObj.find('table', {'class': 'table-bond'})
-		# cornjs3 = bsObj.select('li[class=point]')	#20개 포인트
-		cornjsR = bsObj.find('table', {'class': 'table-bond right'})
-		cornjs2 = cornjs.text
-		cornjs4 = cornjsR.text
-		# cornjs6 = cornjs3.text #20개 포인트
+		driver.get('https://archeage.xlgames.com/play/worldinfo/GARDEN')
 		
-		embed.set_thumbnail(url="https://i.imgur.com/SD4k1fc.jpg")
-		embed.add_field(name='대륙', value=cornjs2, inline=True)
-		embed.add_field(name='대륙', value=cornjs4, inline=True)
-		embed.set_footer(text="업데이트예정", icon_url="https://i.imgur.com/SD4k1fc.jpg")
-		# embed.add_field(name='최소수량', value=cornjs6, inline=True) #20개 포인트
-		await message.channel.send(client, embed=embed)		
+		driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
+		time.sleep(3)
+
+		pyautogui.screenshot('MM.png', region=(20,215,880,450))
+		
+		dirctory = os.path.dirname(__file__)
+		
+		file = discord.File("D:\hs\python\MM.png")
+		
+		await message.channel.send(file=file)
 			
 		
 		# """ 
@@ -672,35 +676,7 @@ async def on_message(message):
 			)
 			await message.channel.send(client, embed=embed)
 			
-	if	message.content.startswith("!다나와"):
 	
-		Name = message.content[5:len(message.content)]
-		# n = str(Name)
-		
-		# url = ("http://search.danawa.com/dsearch.php?query="+n)
-		# print(url)
-		
-		req = requests.get("http://search.danawa.com/dsearch.php?query="+Name)
-		print(req)
-		html = req.text
-		soup = BeautifulSoup(html, "html.parser")
-
-		ram = soup.find('ul',{'class': 'product_list'})
-		print(ram)
-		# b = bsObj.find('a',{'class': 'click_log_product_standard_price_'})
-		
-		# c = a.text
-		# d = b.text
-		
-		embed = discord.Embed(
-			title = "다나와 검색",
-			description = "",
-			colour = discord.Color.red()
-		)
-		
-		embed.add_field(name = "이름", value=ram, inline=True)
-		# embed.add_field(name = "금액", value=b, inline=True)
-		await message.channel.send(client, embed=embed)
 		
 		
 
