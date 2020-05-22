@@ -17,9 +17,11 @@ from selenium.webdriver.chrome.options import Options
 import time
 import requests
 import pyautogui
+import datetime
 
 
 client = discord.Client()
+now = datetime.datetime.now()
 
 @client.event
 async def on_ready():
@@ -56,8 +58,8 @@ async def on_message(message):
 		await message.channel.send("<@" + id + "> ex)갯수 입력 부탁드립니다. :D")
 
 	if message.content.startswith("!계정"):
-		userid = "ggomahot"
-		userpw = "배아파헌쑤야1!"
+		userid = "#"
+		userpw = "#"
 		
 		embed = discord.Embed(
 			title = '김짜증 계정',
@@ -464,6 +466,10 @@ async def on_message(message):
 		# """
 		
 	if message.content.startswith("!채권"):
+	
+		nowDatetime = now.strftime('%Y-%m-%d %H:%M:%S')
+		
+		await message.channel.send(nowDatetime + "의 채권입니다.")
 		
 		embed = discord.Embed(
             title = "오늘의 채권",
