@@ -56,6 +56,12 @@ async def on_message(message):
 	
 	if message.content.startswith("!수려한"):
 		await message.channel.send("<@" + id + "> ex)갯수 입력 부탁드립니다. :D")
+		
+	if message.content.startswith("!시간"):
+		
+		nowTime = now.strftime('%H:%M:%S')
+		
+		await message.channel.send("현재시간: " + nowTime + " 입니다.")
 
 	if message.content.startswith("!계정"):
 		userid = "#"
@@ -483,9 +489,11 @@ async def on_message(message):
 		
 		driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-		time.sleep(3)
+		time.sleep(1)
 
 		pyautogui.screenshot('MM.png', region=(20,215,880,450))
+		
+		driver.close()
 		
 		dirctory = os.path.dirname(__file__)
 		
