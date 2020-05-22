@@ -16,13 +16,5 @@ Python archeage blueShop
 20.05.21<br>
 -패피 출석 자동화 기능 추가<br>
 
-20.06 추가 예정<br>
+20.05.22 추가 완료<br>
  - 채권 이미지 저장 후 불러오기 식으로 변경
-
-import pyautogui
-
-screenWidth, screenHeigt = pyautogui.size()
-print('{0},{1}'.format(screenWidth, screenHeigt))
-
-currentMouseX, currentMouseY = pyautogui.position()
-print('{0},{1}'.format(currentMouseX, currentMouseY))
