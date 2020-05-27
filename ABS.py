@@ -527,7 +527,7 @@ async def on_message(message):
 		for score in a:
 			print('김순딩' + score.text + '점')
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/ky4pgOY.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/Wam2yWL.png')
 		embed.add_field(name = '김순딩', value = score.text + '점', inline = True)
 		
 		
@@ -557,7 +557,7 @@ async def on_message(message):
 		for score in a:
 			print('김짜증' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/QCn3HT5.png')
+		embed.set_thumbnail(url = 'https://i.imgur.com/eGwn6yg.png')
 		embed.add_field(name = '김짜증', value = score.text + '점', inline = True)
 		
 		
@@ -615,7 +615,7 @@ async def on_message(message):
 		for score in a:
 			print('김덤덤' + score.text + '점')	
 		
-		embed.set_thumbnail(url = 'https://i.imgur.com/8EfQtjD.jpg')
+		embed.set_thumbnail(url = 'https://i.imgur.com/oWxq1Mr.png')
 		embed.add_field(name = '김덤덤', value = score.text + '점', inline = True)
 		
 		
