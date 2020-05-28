@@ -35,19 +35,22 @@ pyautogui.click(x= 489, y= 493) #마우스 커서 위치 확인
 
 driver.get('https://xlcash.xlgames.com/Web/Coupon/EnableList.aspx')
 
-driver.find_element_by_xpath('//*[@id="chbAll"]').click()
-
-driver.find_element_by_xpath('//*[@id="form1"]/section[2]/button').click()
-
-driver.get('https://xlcash.xlgames.com/Web/Coupon/Popup/SelectedCoupon.aspx')
-
 driver.find_element_by_xpath('//*[@id="characters"]').click()
 driver.find_element_by_xpath('//*[@id="characters"]/option[7]').click() #캐릭터 선택확인(@정원)
-driver.find_element_by_xpath('//*[@id="aSend"]').click()
 
-driver.switch_to.alert.accept()
 
-time.sleep(3)
+driver.find_element_by_xpath('//*[@id="chbAll"]').click()
+print("!!!!!!")
+driver.find_element_by_xpath('//*[@id="container"]/div/section[3]/button').click()
+print("######")				  
+
+
+alert = driver.switch_to.alert
+alert.accept()
+
+
+# driver.find_element_by_xpath('//*[@id="aSend"]').click()
+
 
 driver.close()
 
