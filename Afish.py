@@ -10,11 +10,11 @@ fish_icon_pos = {20,215,880,450} #물고기 상태창 범위
 #이미지 폴더에서 이미지 찾기
 # ('D:\hs\python\OpenCv_image\left_move.jpg')
 
-down_img = cv2.imread('D:\hs\python\OpenCv_image\down.jpg')
-left_img = cv2.imread('D:\hs\python\OpenCv_image\left_move.jpg')
-right_img = cv2.imread('D:\hs\python\OpenCv_image\right_move.jpg')
-run_img = cv2.imread('D:\hs\python\OpenCv_image\run.jpg')
-up_img = cv2.imread('D:\hs\python\OpenCv_image\up.jpg')
+down_img = cv2.imread('D:\\hs\\python\\OpenCv_image\\down.jpg')
+left_img = cv2.imread('D:\\hs\\python\\OpenCv_image\\left_move.jpg')
+right_img = cv2.imread('D:\\hs\\python\\OpenCv_image\\right_move.jpg')
+run_img = cv2.imread('D:\\hs\\python\\OpenCv_image\\run.jpg')
+up_img = cv2.imread('D:\\hs\\python\\OpenCv_image\\up.jpg')
 
 
 
@@ -43,15 +43,16 @@ while True:
 	# position_str = 'X : ' + str(x) + 'Y : '+ str(y)
 	# print(position_str)
 	
-	if fish_icon_pos == down_img
+	if fish_icon_pos == down_img:
 		click(down_button)
-	elif fish_icon_pos == left_img
+	elif fish_icon_pos == left_img:
 		click(left_button)
-	elif fish_icon_pos == right_img
+	elif fish_icon_pos == right_img:
 		click(right_button)
-	elif fish_icon_pos == run_img
+	elif fish_icon_pos == run_img:
 		click(run_button)
-	elif fish_icon_pos == up_img
+	elif fish_icon_pos == up_img:
 		click(up_button)
 	else:
+		break
 	
