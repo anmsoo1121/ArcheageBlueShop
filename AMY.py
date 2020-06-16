@@ -39,8 +39,8 @@ time.sleep(2)
 driver.find_element_by_xpath('//*[@id="passwordNext"]/span/span').click()
 
 
-# driver.find_element_by_name('j_username').send_keys('anmsoo1121@naver.com')
-# driver.find_element_by_name('j_password').send_keys('hs0104885!')
+# driver.find_element_by_name('j_username').send_keys('#')
+# driver.find_element_by_name('j_password').send_keys('#')
 
 # driver.find_element_by_xpath('//*[@id="loginButton"]').click()
 
