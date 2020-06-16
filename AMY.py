@@ -24,7 +24,7 @@ driver.find_element_by_xpath('//*[@id="wrapperContent"]/div/section/article/div[
 
 time.sleep(2)
 
-driver.find_element_by_name('identifier').send_keys('anmsoo1121@gmail.com')
+driver.find_element_by_name('identifier').send_keys('#')
 
 time.sleep(2)
 
@@ -32,7 +32,7 @@ driver.find_element_by_xpath('//*[@id="identifierNext"]/span/span').click()
 
 time.sleep(2)
 
-driver.find_element_by_name('password').send_keys('hs0104885.')
+driver.find_element_by_name('password').send_keys('#')
 
 time.sleep(2)
 
@@ -58,7 +58,7 @@ pyautogui.click(x= 489, y= 493) #마우스 커서 위치 확인
 driver.get('https://xlcash.xlgames.com/Web/Coupon/EnableList.aspx')
 
 driver.find_element_by_xpath('//*[@id="characters"]').click()
-driver.find_element_by_xpath('//*[@id="characters"]/option[2]').click() #캐릭터 선택확인(@정원 김다정)
+driver.find_element_by_xpath('//*[@id="characters"]/option[2]').click() #캐릭터 선택확인(@정원)
 
 driver.find_element_by_xpath('//*[@id="chbAll"]').click()
 print("!!!!!!")
