@@ -43,7 +43,7 @@ async def on_message(message):
 	channel = message.channel
 		
 	if message.content.startswith("!만든사람"):
-		await message.channel.send("여울이")
+		await message.channel.send("김다정")
 	
 	if message.content.startswith("!업데이트"):
 		await message.channel.send("20.05.12 열쇠제작법 추가")
