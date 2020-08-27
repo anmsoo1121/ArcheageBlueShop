@@ -500,6 +500,29 @@ async def on_message(message):
 		file = discord.File("D:\hs\python\MM.png")
 		
 		await message.channel.send(file=file)
+		
+	if message.content.startswith("$"):
+		await message.channel.send("아키경매장")
+		
+		userInput = message.content[1:]
+
+		driver.get('https://archeage.xlgames.com/auctions')
+		
+		print(userInput)
+		i = driver.find_element_by_xpath('//*[@id="auctionArea"]/div[1]/form/div[2]/span[1]/input').send_key('userInput')
+		print(i)
+		driver.find_element_by_xpath('//*[@id="btnSearch"]').click()
+		driver.find_element_by_xpath('//*[@id="auctionList"]/div[1]/div[2]/div[6]/a/i').click()
+		
+		pyautogui.screenshot('auctions.png', region=(20,215,880,450))
+		
+		driver.close()
+		
+		dirctory = os.path.dirname(__file__)
+		
+		file = discord.file("C:\pthon\auctions.png")
+		
+		await message.channel.send(file=file)	
 			
 		
 		# """ 
