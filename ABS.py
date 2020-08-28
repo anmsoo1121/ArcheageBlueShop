@@ -20,6 +20,7 @@ import pyautogui
 import datetime
 
 
+
 client = discord.Client()
 now = datetime.datetime.now()
 
@@ -46,7 +47,7 @@ async def on_message(message):
 		await message.channel.send("김다정")
 	
 	if message.content.startswith("!업데이트"):
-		await message.channel.send("20.05.12 열쇠제작법 추가")
+		await message.channel.send("20.08.27 경매장 추가")
 	
 	if message.content.startswith("!보름돌"):
 		await message.channel.send("<@" + id + "> ex)!불굴의 보름돌 이라고 입력하쇼")
@@ -91,12 +92,11 @@ async def on_message(message):
 		embed.add_field(name="!수려한", value="수려한 초승돌 제작시 필요개수 표시해줍니다. ex)!수려한 7", inline=False)
 		embed.add_field(name="!보름돌", value="불굴의 초월,사랑,추적,투지 보름돌 제작시 필요개수를 표시해줍니다.", inline=False)
 		embed.add_field(name="!초승돌 강화", value="명점 초승돌 강화시 필요개수를 표시해줍니다.", inline=False)
-		embed.add_field(name = "!캐리명", value="캐릭터의 장점을 표시합니다.", inline=False)
+		embed.add_field(name = "!캐릭명", value="캐릭터의 장점을 표시합니다.", inline=False)
 		embed.set_footer(text="경매장 검색은은 추후 업데이트 예정입니다.")
 		
 		print("!help")
 		await message.channel.send("Hs", embed=embed)
-		
 		
 	
 	if message.content.startswith("!수려한"):
@@ -500,31 +500,44 @@ async def on_message(message):
 		file = discord.File("D:\hs\python\MM.png")
 		
 		await message.channel.send(file=file)
-		
+
+
+	#경매장
+
+
 	if message.content.startswith("$"):
-		await message.channel.send("아키경매장")
-		
+		await message.channel.send(message.content[1:] + " 검색결과 입니다.")
+
 		userInput = message.content[1:]
 
+		driver = webdriver.Chrome('C:/Users/descenteuser/AppData/Local/Programs/Python/chromedriver.exe')
+
 		driver.get('https://archeage.xlgames.com/auctions')
-		
+
 		print(userInput)
-		i = driver.find_element_by_xpath('//*[@id="auctionArea"]/div[1]/form/div[2]/span[1]/input').send_key('userInput')
-		print(i)
+
+		driver.find_element_by_xpath('//*[@id="serverCode"]/option[2]').click()
+
+		driver.find_element_by_name('keywordStr').send_keys(userInput)
+
 		driver.find_element_by_xpath('//*[@id="btnSearch"]').click()
-		driver.find_element_by_xpath('//*[@id="auctionList"]/div[1]/div[2]/div[6]/a/i').click()
-		
-		pyautogui.screenshot('auctions.png', region=(20,215,880,450))
-		
+
+		time.sleep(1)
+
+		driver.find_element_by_xpath('//*[@id="auctionList"]/div[1]/div[2]/div[6]/a').click()
+
+		time.sleep(1)
+
+		pyautogui.screenshot('AC.png', region=(190,290,580,500))
+
 		driver.close()
-		
+
 		dirctory = os.path.dirname(__file__)
-		
-		file = discord.file("C:\pthon\auctions.png")
-		
-		await message.channel.send(file=file)	
-			
-		
+
+		file = discord.File("D:\hs\python\AC.png")
+
+		await message.channel.send(file=file)
+
 		# """ 
 		# 김가네 장점 가져오기
 		# """
@@ -662,7 +675,7 @@ async def on_message(message):
 		html = urllib.request.urlopen(req)
 		bsObj = bs4.BeautifulSoup(html, "html.parser")
 		
-		a = bsObj.select('.score')
+		a = bsObj.select('.score')		
 		
 		for score in a:
 			print('김다정' + score.text + '점')	
