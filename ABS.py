@@ -4,8 +4,8 @@ from discord.ext import commands
 import os
 import asyncio
 # import requests
-# from bs4 import BeautifulSoup
-import bs4
+from bs4 import BeautifulSoup
+#import bs4
 from urllib.request import urlopen, Request
 import urllib
 import urllib.request
@@ -542,29 +542,46 @@ async def on_message(message):
 		# 김가네 장점 가져오기
 		# """
 		
-	if message.content.startswith("!김순딩"):
+	if message.content.startswith("!푸름"):
 		
 		embed = discord.Embed(
-            title = "김가네 장점",
+            title = "페피출석 정보",
             description = " ",
             colour= discord.Color.red()
         )
-		hdr = {'User-Agent': 'Mozilla/5.0'}
-		 
-		url = 'https://archeage.xlgames.com/characters/3CD2027B-C03A-4A48-979C-B320AE7C6A56' #김순딩
-		print(url)
 		
-		req = Request(url, headers=hdr)
-		html = urllib.request.urlopen(req)
-		bsObj = bs4.BeautifulSoup(html, "html.parser")
-		
-		a = bsObj.select('.score')
-		
-		for score in a:
-			print('김순딩' + score.text + '점')
+		driver = webdriver.Chrome('C:/Users/descenteuser/AppData/Local/Programs/Python/chromedriver.exe')
+
+		delay_time = 3
+		driver.implicitly_wait(delay_time)
+
+		driver.get('https://member.xlgames.com/user/login/form')
+
+		id ='#'
+		password = '#'
+
+		driver.find_element_by_name('j_username').send_keys(id)
+		driver.find_element_by_name('j_password').send_keys(password)
+
+		driver.find_element_by_xpath('//*[@id="loginButton"]').click()
+
+		time.sleep(1)
+
+		driver.get('https://archeage.xlgames.com/events/2019/search')
+
+		html = driver.page_source
+
+		soup = BeautifulSoup(html, 'html.parser')
+
+		ccday = soup.find('div', class_='day').text
+
+		print(ccday)
+
+		driver.close()
+
 		
 		embed.set_thumbnail(url = 'https://i.imgur.com/Wam2yWL.png')
-		embed.add_field(name = '김순딩', value = score.text + '점', inline = True)
+		embed.add_field(name = '푸름', value = ccday , inline = True)
 		
 		
 		await message.channel.send(client, embed=embed)
@@ -573,28 +590,42 @@ async def on_message(message):
 	if message.content.startswith("!김짜증"):
 	
 		embed = discord.Embed(
-			title = "김가네 장점",
-			description = "",
-			colour = discord.Color.red()
-		)
+            title = "페피출석 정보",
+            description = " ",
+            colour= discord.Color.red()
+        )
 		
-		hdr = {'User-Agent': 'Mozilla/5.0'}
-		
-		url = 'https://archeage.xlgames.com/characters/F69B27C6-4798-490C-B50A-D4E459CCE8A5' #김짜증
-		
-		print(url)
-		
-		req = Request(url, headers=hdr)
-		html = urllib.request.urlopen(req)
-		bsObj = bs4.BeautifulSoup(html, "html.parser")
-		
-		a = bsObj.select('.score')
-		
-		for score in a:
-			print('김짜증' + score.text + '점')	
+		driver = webdriver.Chrome('C:/Users/descenteuser/AppData/Local/Programs/Python/chromedriver.exe')
+
+		delay_time = 3
+		driver.implicitly_wait(delay_time)
+
+		driver.get('https://member.xlgames.com/user/login/form')
+
+		id ='#'
+		password = '#'
+
+		driver.find_element_by_name('j_username').send_keys(id)
+		driver.find_element_by_name('j_password').send_keys(password)
+
+		driver.find_element_by_xpath('//*[@id="loginButton"]').click()
+
+		time.sleep(1)
+
+		driver.get('https://archeage.xlgames.com/events/2019/search')
+
+		html = driver.page_source
+
+		soup = BeautifulSoup(html, 'html.parser')
+
+		ccday = soup.find('div', class_='day').text
+
+		print(ccday)
+
+		driver.close()		
 		
 		embed.set_thumbnail(url = 'https://i.imgur.com/eGwn6yg.png')
-		embed.add_field(name = '김짜증', value = score.text + '점', inline = True)
+		embed.add_field(name = '김짜증', value = ccday, inline = True)
 		
 		
 		await message.channel.send(client, embed=embed)
@@ -631,28 +662,42 @@ async def on_message(message):
 	if message.content.startswith("!김덤덤"):
 	
 		embed = discord.Embed(
-			title = "김가네 장점",
-			description = "",
-			colour = discord.Color.red()
-		)
+            title = "페피출석 정보",
+            description = " ",
+            colour= discord.Color.red()
+        )
 		
-		hdr = {'User-Agent': 'Mozilla/5.0'}
-		
-		url = 'https://archeage.xlgames.com/characters/8184B531-C3B9-4988-B987-13176949BBD5' #김덤덤
-		
-		print(url)
-		
-		req = Request(url, headers=hdr)
-		html = urllib.request.urlopen(req)
-		bsObj = bs4.BeautifulSoup(html, "html.parser")
-		
-		a = bsObj.select('.score')
-		
-		for score in a:
-			print('김덤덤' + score.text + '점')	
+		driver = webdriver.Chrome('C:/Users/descenteuser/AppData/Local/Programs/Python/chromedriver.exe')
+
+		delay_time = 3
+		driver.implicitly_wait(delay_time)
+
+		driver.get('https://member.xlgames.com/user/login/form')
+
+		id ='#'
+		password = '#'
+
+		driver.find_element_by_name('j_username').send_keys(id)
+		driver.find_element_by_name('j_password').send_keys(password)
+
+		driver.find_element_by_xpath('//*[@id="loginButton"]').click()
+
+		time.sleep(1)
+
+		driver.get('https://archeage.xlgames.com/events/2019/search')
+
+		html = driver.page_source
+
+		soup = BeautifulSoup(html, 'html.parser')
+
+		ccday = soup.find('div', class_='day').text
+
+		print(ccday)
+
+		driver.close()
 		
 		embed.set_thumbnail(url = 'https://i.imgur.com/oWxq1Mr.png')
-		embed.add_field(name = '김덤덤', value = score.text + '점', inline = True)
+		embed.add_field(name = '김덤덤', value = ccday, inline = True)
 		
 		
 		await message.channel.send(client, embed=embed)
@@ -660,28 +705,42 @@ async def on_message(message):
 	if message.content.startswith("!김다정"):
 	
 		embed = discord.Embed(
-			title = "김가네 장점",
-			description = "",
-			colour = discord.Color.red()
-		)
+            title = "페피출석 정보",
+            description = " ",
+            colour= discord.Color.red()
+        )
 		
-		hdr = {'User-Agent': 'Mozilla/5.0'}
-		
-		url = 'https://archeage.xlgames.com/characters/02EF0662-5086-4910-95F2-E45C2B947778' #김다정
-		
-		print(url)
-		
-		req = Request(url, headers=hdr)
-		html = urllib.request.urlopen(req)
-		bsObj = bs4.BeautifulSoup(html, "html.parser")
-		
-		a = bsObj.select('.score')		
-		
-		for score in a:
-			print('김다정' + score.text + '점')	
+		driver = webdriver.Chrome('C:/Users/descenteuser/AppData/Local/Programs/Python/chromedriver.exe')
+
+		delay_time = 3
+		driver.implicitly_wait(delay_time)
+
+		driver.get('https://member.xlgames.com/user/login/form')
+
+		id ='#'
+		password = '#!'
+
+		driver.find_element_by_name('j_username').send_keys(id)
+		driver.find_element_by_name('j_password').send_keys(password)
+
+		driver.find_element_by_xpath('//*[@id="loginButton"]').click()
+
+		time.sleep(1)
+
+		driver.get('https://archeage.xlgames.com/events/2019/search')
+
+		html = driver.page_source
+
+		soup = BeautifulSoup(html, 'html.parser')
+
+		ccday = soup.find('div', class_='day').text
+
+		print(id,+"김다정"+, ccday)
+
+		driver.close()
 		
 		embed.set_thumbnail(url = 'https://i.imgur.com/rVgdqCI.jpg')
-		embed.add_field(name = '김다정', value = score.text + '점', inline = True)
+		embed.add_field(name = '김다정', value = ccday, inline = True)
 		
 		
 		await message.channel.send(client, embed=embed)
