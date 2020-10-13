@@ -14,6 +14,7 @@ from selenium import webdriver
 from PIL import Image
 from io import BytesIO
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver import ActionChains
 import time
 import requests
 import pyautogui
@@ -487,7 +488,14 @@ async def on_message(message):
 		
 		driver.get('https://archeage.xlgames.com/play/worldinfo/GARDEN')
 		
-		driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+		#driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+		SCROLL_PAUSE_SEC = 1
+		last_height = driver.execute_script("return document.body.scrollHeight")
+		print(last_height)
+		driver.execute_script("window.scrollTo(0,1710)")
+		#some_tag = driver.find_element_by_class_name('btn')
+		#action = ActionChains(driver)
+		#action.move_to_element(some_tag).perform()
 
 		time.sleep(1)
 
@@ -516,7 +524,7 @@ async def on_message(message):
 
 		print(userInput)
 
-		driver.find_element_by_xpath('//*[@id="serverCode"]/option[2]').click()
+		driver.find_element_by_xpath('//*[@id="serverCode"]/option[1]').click()
 
 		driver.find_element_by_name('keywordStr').send_keys(userInput)
 
@@ -718,7 +726,7 @@ async def on_message(message):
 		driver.get('https://member.xlgames.com/user/login/form')
 
 		id ='#'
-		password = '#!'
+		password = '#'
 
 		driver.find_element_by_name('j_username').send_keys(id)
 		driver.find_element_by_name('j_password').send_keys(password)
@@ -735,7 +743,7 @@ async def on_message(message):
 
 		ccday = soup.find('div', class_='day').text
 
-		print(id,+"김다정"+, ccday)
+		print(id,"김다정", ccday)
 
 		driver.close()
 		
