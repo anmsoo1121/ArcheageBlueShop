@@ -56,3 +56,62 @@ while True:
 	else:
 		break
 	
+	
+	
+###############################
+from selenium import webdriver
+#import pyautogui
+import discord
+
+
+if message.content.startwith("!"):
+    await message.channel.send(message.content[1:])
+
+    userInput1 = message.content[1:]
+    userInput2 = message.content[2,3:]
+    userInput3 = message.content[4,5:]
+    userInput4 = message.content[6,7:]
+
+    userInput5 = message.content[8:]
+    userInput6 = message.content[9,10:]
+    userInput7 = message.content[11,12:]
+    userInput8 = message.content[13,14:]
+
+driver = webdriver.Chrome('/usr/local/bin/chromedriver')
+
+driver.get('http://archeve.co.kr/map.do')
+
+
+#input key 0,1: 2,3: 4,5:
+
+
+
+userInput1 = 'W'
+userInput5 = 'S'
+
+if userInput1 == userInput1:
+    driver.find_element_by_xpath('//*[@id="we"]/option[1]').click()
+else:
+    driver.find_element_by_xpath('//*[@id="we"]/option[2]').click()
+
+driver.find_element_by_id('horFst').send_keys(userInput2)
+driver.find_element_by_id('horScd').send_keys(userInput3)
+driver.find_element_by_id('horThd').send_keys(userInput4)
+
+if userInput5 == userInput5:
+    driver.find_element_by_xpath('//*[@id="sn"]/option[1]').click()
+else:
+    driver.find_element_by_xpath('//*[@id="sn"]/option[2]').click()
+
+driver.find_element_by_id('verFst').send_keys(userInput6)
+driver.find_element_by_id('verScd').send_keys(userInput7)
+driver.find_element_by_id('verThd').send_keys(userInput8)
+
+driver.find_element_by_xpath('//*[@id="floatingMenu"]/div[3]/button[3]').click()
+
+#pyautogui.screenshot('TT.png', region=(20, 215, 880, 450))
+
+
+
+
+#//*[@id="horFst"]
