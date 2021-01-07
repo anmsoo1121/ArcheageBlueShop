@@ -27,7 +27,8 @@ driver.find_element_by_xpath('//*[@id="loginButton"]').click()
 
 time.sleep(2)
 
-driver.get('https://archeage.xlgames.com/promotions/2020/05/dice')
+#driver.get('https://archeage.xlgames.com/promotions/2020/05/dice') #20.5월 아키마블
+driver.get('https://archeage.xlgames.com/promotions/2021/01/dice') #21.01.07 모오마블
 driver.find_element_by_xpath('//*[@id="dice-roll"]/button').click()
 
 driver.get('https://archeage.xlgames.com/events/running/679')
